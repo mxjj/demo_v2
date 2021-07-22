@@ -4,7 +4,7 @@
       <!-- 标题 -->
       <div class="title border"></div>
       <!-- 中间的图片轮播 -->
-      <div class="center"></div>
+      <carouselMap></carouselMap>
       <!-- 底部 -->
       <div class="floor"></div>
       <!-- 呼吸灯 -->
@@ -13,10 +13,13 @@
   </div>
 </template>
 <script>
+import carouselMap from "./carouselMap";
 export default {
+  components: { carouselMap },
+
   data() {
     return {};
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -58,7 +61,7 @@ export default {
       height: 50px;
       width: 50px;
       border-radius: 50%;
-      background: #EEFB01;
+      background: #eefb01;
       animation: lamp 2s ease infinite;
       @keyframes lamp {
         from {
