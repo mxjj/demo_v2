@@ -4,7 +4,13 @@
       <!-- 标题 -->
       <div class="title border"></div>
       <!-- 中间的图片轮播 -->
-      <div class="center"></div>
+      <div class="center">
+        <el-carousel :interval="4000" type="card" height="200px">
+          <el-carousel-item v-for="item in 6" :key="item">
+            <h3 class="medium">{{ item }}</h3>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
       <!-- 底部 -->
       <div class="floor"></div>
       <!-- 呼吸灯 -->
@@ -24,7 +30,7 @@ export default {
   min-width: 1323px;
   .item {
     height: 100vh;
-    background: #000;
+    // background: #000;
     width: 100%;
     .title {
       height: 50px;
@@ -32,6 +38,21 @@ export default {
       margin-top: 100px;
     }
     .center {
+      .el-carousel__item h3 {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+      }
+
+      .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+      }
+
+      .el-carousel__item:nth-child(2n + 1) {
+        background-color: #d3dce6;
+      }
     }
 
     .floor {
@@ -58,7 +79,7 @@ export default {
       height: 50px;
       width: 50px;
       border-radius: 50%;
-      background: #EEFB01;
+      background: #eefb01;
       animation: lamp 2s ease infinite;
       @keyframes lamp {
         from {
