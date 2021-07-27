@@ -2,7 +2,9 @@
   <div class="content">
     <div class="item flex flex-col flex-ai-center flex-jc-space-between">
       <!-- 标题 -->
-      <div class="title border"></div>
+      <div class="title">
+        动效轮播图
+      </div>
       <!-- 中间的图片轮播 -->
       <div class="center">
         <el-carousel :interval="4000" type="card" height="200px">
@@ -30,14 +32,21 @@ export default {
   min-width: 1323px;
   .item {
     height: 100vh;
-    // background: #000;
+    background: #000;
     width: 100%;
     .title {
       height: 50px;
       width: 180px;
+      font-size: 28px;
+      font-weight: bold;
       margin-top: 100px;
     }
     .center {
+      width: 800px;
+      .el-carousel__item {
+        height: 200px;
+        width: 500px;
+      }
       .el-carousel__item h3 {
         color: #475669;
         font-size: 14px;
