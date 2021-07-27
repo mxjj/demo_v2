@@ -7,5 +7,13 @@ module.exports = {
     productionSourceMap: false, // 生产环境的 source map false加速生产环境构建
     devServer: {
         open: true
+    },
+    css: {
+        loaderOptions: {
+            sass: {
+                // 样式的引入路径
+                prependData: `@import "@/style/globalColor.scss";`,
+            },
+        }
     }
 }
