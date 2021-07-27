@@ -27,7 +27,9 @@ export default {
     },
     onMouseup(e, index) {
       this.onMouseupNum = e.offsetX;
-      this.boxMoveDirection(e, index);
+      setTimeout(() => {
+        this.boxMoveDirection(e, index);
+      }, 300);
     },
 
     boxMoveDirection(e, index) {
