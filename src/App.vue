@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <!-- <HappyBirthday></HappyBirthday> -->
-    <demoPractice></demoPractice>
+    <!-- <demoPractice></demoPractice> -->
+    <component :is="'demoPractice'"></component>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
     // HappyBirthday,
     demoPractice,
   },
+  
 };
 </script>
 
