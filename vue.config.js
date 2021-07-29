@@ -8,6 +8,10 @@ module.exports = {
     devServer: {
         open: true
     },
+    chainWebpack: config => {
+        // 压缩文件体积变小
+        // config.optimization.minimize(true);
+    },
     css: {
         loaderOptions: {
             sass: {
