@@ -6,6 +6,7 @@
         动效轮播图
       </div>
       <!-- 中间的图片轮播 -->
+      <!-- <carouselMap></carouselMap> -->
       <div class="center">
         <el-carousel :interval="4000" type="card" height="200px">
           <el-carousel-item v-for="item in 6" :key="item">
@@ -21,10 +22,13 @@
   </div>
 </template>
 <script>
+import carouselMap from "./carouselMap";
 export default {
+  components: { carouselMap },
+
   data() {
     return {};
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
