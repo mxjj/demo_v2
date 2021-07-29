@@ -7,7 +7,10 @@ Vue.use(Router)
 
 const router = new Router({
     mode: 'history',
-    routes: mobilePageRouters
+    routes: [{
+        path: "/",
+        redirect: '/home',
+    }, ...mobilePageRouters]
 })
 
 
