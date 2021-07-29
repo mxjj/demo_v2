@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import HappyBirthday from "./components/HappyBirthday";
+// import HappyBirthday from "./components/HappyBirthday";
 import demoPractice from "./components/demoPractice";
 export default {
   name: "App",
   components: {
-    HappyBirthday,
+    // HappyBirthday,
     demoPractice,
   },
 };
