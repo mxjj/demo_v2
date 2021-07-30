@@ -12,7 +12,8 @@ try {
 
 // 先给一个自定义的初始化颜色
 const state = {
-    color: color
+    color: color,
+    activeComponent: 'home'
 }
 
 const mutations = {
@@ -25,7 +26,11 @@ const mutations = {
             })
         })
         state.color = value
-        window.localStorage.setItem('globalColor',value)
+        window.localStorage.setItem('globalColor', value)
+    },
+    //设置 当前选中
+    SET_ACTIVE_TABS(state, value) {
+        state.activeComponent = value
     }
 }
 
@@ -35,6 +40,12 @@ const actions = {
         commit
     }, data) {
         commit('SET_THEMR_COLOR', data)
+    },
+    // 设置当前选中
+    ACTIVE_SET_HEADER({
+        commit
+    }, data) {
+        commit('SET_ACTIVE_TABS', data)
     }
 }
 
