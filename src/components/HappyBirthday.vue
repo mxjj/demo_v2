@@ -8,9 +8,14 @@
       <!-- 中间的图片轮播 -->
       <!-- <carouselMap></carouselMap> -->
       <div class="center">
-        <el-carousel :interval="4000" type="card" height="200px">
+        <el-carousel
+          :interval="2000"
+          type="card"
+          height="200px"
+          indicator-position="none"
+        >
           <el-carousel-item v-for="item in 6" :key="item">
-            <h3 class="medium">{{ item }}</h3>
+            <el-image :src="happlyImage"></el-image>
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -22,22 +27,34 @@
   </div>
 </template>
 <script>
-import carouselMap from "./carouselMap";
+// import carouselMap from "./carouselMap";
 export default {
-  components: { carouselMap },
+  // components: { carouselMap },
 
   data() {
-    return {};
-  }
+    return {
+      happlyImage: require("@/assets/images/happly_1.jpg"),
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
 .content {
   min-width: 1323px;
   .item {
-    height: 100vh;
-    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    min-width: 1000px;
+    z-index: -10;
+    zoom: 1;
+    // background: #000;
+    background-image: url("~@/assets/images/happly_5.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
     .title {
       height: 50px;
       width: 180px;
@@ -47,24 +64,10 @@ export default {
     }
     .center {
       width: 800px;
-      .el-carousel__item {
+      img {
         height: 200px;
         width: 500px;
-      }
-      .el-carousel__item h3 {
-        color: #475669;
-        font-size: 14px;
-        opacity: 0.75;
-        line-height: 200px;
-        margin: 0;
-      }
-
-      .el-carousel__item:nth-child(2n) {
-        background-color: #99a9bf;
-      }
-
-      .el-carousel__item:nth-child(2n + 1) {
-        background-color: #d3dce6;
+        border: 1px solid red;
       }
     }
 
