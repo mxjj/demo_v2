@@ -2,12 +2,12 @@ import axios from 'axios'
 import {
     Loading,
     Message,
-    Notification,
+    // Notification,
     MessageBox
 } from 'element-ui'
 
 import store from '../store'
-import router from '../router/index'
+// import router from '../router/index'
 
 import Cookies from 'js-cookie'
 
@@ -15,24 +15,17 @@ import Cookies from 'js-cookie'
 
 let requestNum = 0, // 累计请求数
     loadingInstance = null, // loading实例
-    againGetToken = false, // 重新获取token
-    isDialogshowed = false // 是否已经弹窗去登录
+    againGetToken = false // 重新获取token
+    // isDialogshowed = false // 是否已经弹窗去登录
 
 const service = axios.create({
     baseURL: process.env.VUE_APP_BASE_URL,
     timeout: 1000 * 60 * 30,
     responseType: 'json',
-    // withCredentials: true, // 是否允许带cookie这些
     headers: {
         'Content-Type': 'application/json',
         // 'Content-Type': 'application/x-www-form-urlencoded',
     },
-    // 定义可获得的http响应状态码
-    // return true、设置为null或者undefined，promise将resolved,否则将rejected
-    // validateStatus(status) {
-    // 	console.log(status)
-    // 	return status >= 200 && status <= 500
-    // },
 })
 
 service.interceptors.request.use(
@@ -41,23 +34,15 @@ service.interceptors.request.use(
         // 每次发送请求之前判断vuex中是否存在token
         // 如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
         // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
-        // const token = store.state.user.token
-        // const refreshToken = store.state.user.refreshToken
         let token = Cookies.get('Auth-AdminToken')
         let refreshToken = Cookies.get('Auth-AdminRefreshToken')
 
-        // if (process.env.NODE_ENV != 'production') {
-        // 	token = '000000'
-        // 	refreshToken = Cookies.get('Auth-AdminRefreshToken')
-        // }
         token && (config.headers['Auth-AdminToken'] = token)
         // console.log(config)
         refreshToken && (againGetToken || (config && config.data && config.data.isRefreshToken)) && (config.headers['Auth-AdminRefreshToken'] = refreshToken)
         if (config && config.data && config.data.isRefreshToken) {
             config.data = null
         }
-        // refreshToken && againGetToken && (config.headers['Auth-AdminRefreshToken'] = refreshToken)
-        // console.log(config)
         return config
     },
     error => {
@@ -81,20 +66,18 @@ service.interceptors.response.use(
                 msg,
                 errcode,
                 data,
-                confirmType,
-                redirectUrl
             } = res.data
 
             if (success) {
                 // 请求成功
-                isDialogshowed = false
+                // isDialogshowed = false
                 return data
             }
-            return new Promise(async (resolve, reject) => {
-                const {
-                    params,
-                    url
-                } = res.config
+            return new Promise((resolve, reject) => {
+                // const {
+                //     params,
+                //     url
+                // } = res.config
 
                 // 没有权限
                 if (errcode == 'NotAccess') {
@@ -108,7 +91,9 @@ service.interceptors.response.use(
                         if (res.config && res.config.data) {
                             reqParams = JSON.parse(res.config.data)
                         }
-                    } catch (error) {}
+                    } catch (error) {
+                        console.log(error)
+                    }
 
                     if (reqParams && reqParams.handleError) {
                         console.log('自行处理错误', res)
@@ -177,7 +162,7 @@ service.interceptors.response.use(
                     return Promise.reject({
                         msg: msg || error,
                     })
-                    break
+                    
             }
 
             console.log("error == 'Error: Network Error'", error == 'Error: Network Error', msg, error) // for debug

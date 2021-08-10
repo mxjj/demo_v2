@@ -15,9 +15,11 @@ export default {
                     appId: '',
                     // 需要打开的跳转路径
 					path: '',
+					// 小程序打开版本是否是正式版
 					envVersion: 'release',
-					success(res) {
-						console.log('打开成功', customizePath.applet)
+					success() {
+						// console.log('打开成功', customizePath.applet)
+						console.log(res)
 						// 打开成功
 					},
 					fail(err) {
