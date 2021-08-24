@@ -21,7 +21,7 @@ module.exports = {
                 pathRewrite: {
                     '^/mock': '/mock',
                 }
-            },
+            }
         }
     },
     chainWebpack: config => {

@@ -8,6 +8,13 @@ const test = [{
         title: '测试',
     },
     component: () => import('@/pages/test/index')
+}, {
+    path: "/upload",
+    name: 'upload',
+    meta: {
+        title: '上传',
+    },
+    component: () => import('@/pages/upload')
 }, ]
 
 

@@ -7,7 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import header from './components/header'
 import api from './api/index'
-import qiniu from 'qiniu-js'
+import * as qiniu from 'qiniu-js'
 Vue.use(ElementUI)
 
 Vue.component('websiteHeader', header)
