@@ -31,9 +31,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.$api.login().then(res => {
-			console.log(res)
-		})
+		// this.$api.login().then(res => {
+		// 	console.log(res)
+		// })
 	},
 }
 </script>
