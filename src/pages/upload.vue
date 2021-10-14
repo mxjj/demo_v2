@@ -30,8 +30,8 @@ export default {
 		onChange(file, fileList) {
 			console.log(this.$qiniu, file, fileList)
 
-			const observable = this.$qiniu.upload(file, key, token, putExtra, config)
-			console.log(observable)
+			// const observable = this.$qiniu.upload(file, key, token, putExtra, config)
+			// console.log(observable)
 		},
 		handleRemove(file, fileList) {
 			console.log(file, fileList)

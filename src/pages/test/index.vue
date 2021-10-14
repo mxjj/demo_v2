@@ -31,6 +31,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.$App_wxInit()
 		// this.$api.login().then(res => {
 		// 	console.log(res)
 		// })

@@ -7,6 +7,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import header from './components/header'
 import api from './api/index'
+import {
+  App_wxInit
+} from './utils/wxInit'
 import * as qiniu from 'qiniu-js'
 Vue.use(ElementUI)
 
@@ -16,6 +19,7 @@ import './utils/initialization.js'
 
 Vue.prototype.$api = api
 Vue.prototype.$qiniu = qiniu
+Vue.prototype.$App_wxInit = App_wxInit
 Vue.config.productionTip = false
 new Vue({
   router,
