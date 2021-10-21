@@ -11,7 +11,8 @@ const router = new Router({
     routes: [{
         path: "/",
         redirect: '/test',
-    }, ...mobilePageRouters, ...demotest]
+    }
+    , ...mobilePageRouters, ...demotest]
 })
 
 

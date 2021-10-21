@@ -5,12 +5,13 @@
 			<el-container>
 				<el-aside width="200px">Aside</el-aside>
 				<el-container>
-					<el-main>Main</el-main>
-					<el-footer>Footer</el-footer>
+					<el-main>
+						<!-- 渲染路径 -->
+						<router-view />
+					</el-main>
 				</el-container>
 			</el-container>
 		</el-container>
-		<router-view />
 	</div>
 </template>
 <script>
@@ -35,7 +36,6 @@ export default {
 	background-color: #d3dce6;
 	color: #333;
 	text-align: center;
-	line-height: 200px;
 }
 
 .el-main {
@@ -45,16 +45,7 @@ export default {
 	line-height: 160px;
 }
 
-body > .el-container {
-	margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-	line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-	line-height: 320px;
+.el-container {
+	min-height: calc(100vh - 70px);
 }
 </style>

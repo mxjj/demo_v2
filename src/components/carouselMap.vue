@@ -14,7 +14,7 @@ export default {
 			boxHeight: 0,
 			boxWidth: 0,
 			onMousedownNum: 0,
-    		onMouseupNum: 0,
+			onMouseupNum: 0,
 		}
 	},
 	methods: {

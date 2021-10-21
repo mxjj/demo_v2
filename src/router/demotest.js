@@ -24,7 +24,14 @@ const test = [{
         title: '上传',
     },
     component: () => import('@/pages/upload')
-}, ]
+},{
+    path: "/body",
+    name: 'body',
+    meta: {
+        title: '猪页',
+    },
+    component: () => import('@/pages/upload')
+} ]
 
 
 export default test
