@@ -1,21 +1,25 @@
 <template>
 	<div>
 		<el-container>
-			<el-header>Header</el-header>
+			<el-aside width="200px">侧边</el-aside>
 			<el-container>
-				<el-aside width="200px">Aside</el-aside>
-				<el-container>
-					<el-main>
-						<!-- 渲染路径 -->
-						<router-view />
-					</el-main>
-				</el-container>
+				<el-header>
+					<Header />
+				</el-header>
+				<el-main>
+					<!-- 渲染路径 -->
+					<router-view />
+				</el-main>
 			</el-container>
 		</el-container>
 	</div>
 </template>
 <script>
+import Header from './components/header'
 export default {
+	components: {
+		Header,
+	},
 	data() {
 		return {}
 	},
@@ -24,28 +28,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.el-header,
-.el-footer {
-	background-color: #b3c0d1;
-	color: #333;
-	text-align: center;
-	line-height: 60px;
+.el-header {
+	padding: 0!important;
 }
-
-.el-aside {
-	background-color: #d3dce6;
-	color: #333;
-	text-align: center;
-}
-
-.el-main {
-	background-color: #e9eef3;
-	color: #333;
-	text-align: center;
-	line-height: 160px;
-}
-
 .el-container {
-	min-height: calc(100vh - 70px);
+	min-height: 100vh;
 }
 </style>

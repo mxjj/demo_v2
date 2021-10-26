@@ -15,7 +15,7 @@ const test = [{
         meta: {
             title: '测试',
         },
-        component: () => import('@/pages/test/index')
+        component: () => import('@/pages/mobile/test/index')
     }]
 }, {
     path: "/upload",
@@ -23,14 +23,14 @@ const test = [{
     meta: {
         title: '上传',
     },
-    component: () => import('@/pages/upload')
+    component: () => import('@/pages/mobile/upload')
 },{
     path: "/body",
     name: 'body',
     meta: {
         title: '猪页',
     },
-    component: () => import('@/pages/upload')
+    component: () => import('@/pages/mobile/upload')
 } ]
 
 
