@@ -25,6 +25,7 @@
 </template>
 <script>
 import { mapMutations } from 'vuex'
+import skulist from '@/utils/sku.js'
 export default {
 	data() {
 		return {
@@ -32,10 +33,36 @@ export default {
 			jabbar_nav_header_color: '', //头部自定义颜色
 		}
 	},
+	mounted() {
+		this.skuChange()
+	},
 	methods: {
 		...mapMutations(['SET_Herder_THEMR_COLOR']),
 		headerColorChange(value) {
 			this.SET_Herder_THEMR_COLOR(value)
+		},
+
+		skuChange() {
+			console.log(skulist)
+			let newSkulist = []
+			skulist.map(item => {
+				if (item.Attributes && item.Attributes.length) {
+					item.Attributes.map(child => {
+						if (child) {
+							child.skulist = []
+							let isHas = false
+							if (newSkulist.length) {
+								isHas = newSkulist.some(sku => {
+									return sku.AttributesID == child.AttributesID
+								})
+							}
+							if (!isHas) {
+								newSkulist.push(child)
+							}
+						}
+					})
+				}
+			})
 		},
 	},
 }
