@@ -6,15 +6,15 @@
 				<ul class="jabbar_nav-color">
 					<div class="jabbar_nav-color_item flex">
 						<span>顶部：</span>
-						<el-color-picker v-model="jabbar_nav_header_color" @active-change="headerColorChange"></el-color-picker>
+						<el-color-picker :value="headerColor" @active-change="SET_Herder_THEMR_COLOR"></el-color-picker>
 					</div>
 					<div class="jabbar_nav-color_item flex">
 						<span>侧边栏：</span>
-						<el-color-picker v-model="jabbar_nav_header_color" @active-change="headerColorChange"></el-color-picker>
+						<el-color-picker :value="tabarColor" @active-change="SET_Tabbar_THEMR_COLOR"></el-color-picker>
 					</div>
 					<div class="jabbar_nav-color_item flex">
 						<span>主体部分：</span>
-						<el-color-picker v-model="jabbar_nav_header_color" @active-change="headerColorChange"></el-color-picker>
+						<el-color-picker v-model="jabbar_nav_content_color"></el-color-picker>
 					</div>
 				</ul>
 				<i slot="reference" class="el-icon-s-tools"></i>
@@ -24,46 +24,23 @@
 	</div>
 </template>
 <script>
-import { mapMutations } from 'vuex'
-import skulist from '@/utils/sku.js'
+import { mapMutations, mapState } from 'vuex'
 export default {
+	computed: {
+		...mapState(['headerColor', 'tabarColor']),
+	},
 	data() {
 		return {
 			header_Image: require('@/assets/admin/jabbar/jabbar_2.jpeg'),
-			jabbar_nav_header_color: '', //头部自定义颜色
+			jabbar_nav_content_color: '',
 		}
 	},
 	mounted() {
 		this.skuChange()
 	},
 	methods: {
-		...mapMutations(['SET_Herder_THEMR_COLOR']),
-		headerColorChange(value) {
-			this.SET_Herder_THEMR_COLOR(value)
-		},
-
-		skuChange() {
-			console.log(skulist)
-			let newSkulist = []
-			skulist.map(item => {
-				if (item.Attributes && item.Attributes.length) {
-					item.Attributes.map(child => {
-						if (child) {
-							child.skulist = []
-							let isHas = false
-							if (newSkulist.length) {
-								isHas = newSkulist.some(sku => {
-									return sku.AttributesID == child.AttributesID
-								})
-							}
-							if (!isHas) {
-								newSkulist.push(child)
-							}
-						}
-					})
-				}
-			})
-		},
+		...mapMutations(['SET_Herder_THEMR_COLOR', 'SET_Tabbar_THEMR_COLOR']),
+		skuChange() {},
 	},
 }
 </script>

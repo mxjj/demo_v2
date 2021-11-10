@@ -12,6 +12,6 @@ export default {
 <style lang="scss" scoped>
 .admin_Side {
 	height: 100%;
-	background: skyblue;
+	background: var(--jabbar_nav_Tabbar_color);
 }
 </style>
