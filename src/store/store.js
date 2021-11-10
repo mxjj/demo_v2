@@ -1,11 +1,15 @@
 import cssVars from 'css-vars-ponyfill'
 
 
-let color = ''
+let color,
+    headerColor,
+    tabarHeaderColor = ''
 
 try {
     // 方便下次进来直接更换用户之前设定的初始的主题颜色
     color = window.localStorage.getItem('globalColor') || 'blue'
+    headerColor = window.localStorage.getItem('globalTabbarColor') || 'blue'
+    tabarHeaderColor = window.localStorage.getItem('globalheaderColor') || 'blue'
 } catch (error) {
     console.log(error, '====主题颜色获取异常')
 }
@@ -13,6 +17,8 @@ try {
 // 先给一个自定义的初始化颜色
 const state = {
     color: color,
+    headerColor: headerColor,
+    tabarHeaderColor: tabarHeaderColor,
     activeComponent: 'home'
 }
 
@@ -27,6 +33,28 @@ const mutations = {
         })
         state.color = value
         window.localStorage.setItem('globalColor', value)
+    },
+    // 修改header主题颜色
+    SET_Herder_THEMR_COLOR(state, value) {
+        cssVars({
+            preserveStatic: false,
+            variables: ({
+                '--jabbar_nav_header_color': value
+            })
+        })
+        state.color = value
+        window.localStorage.setItem('globalheaderColor', value)
+    },
+      // 修改header主题颜色
+      SET_Tabbar_THEMR_COLOR(state, value) {
+        cssVars({
+            preserveStatic: false,
+            variables: ({
+                '--jabbar_nav_Tabbar_color': value
+            })
+        })
+        state.color = value
+        window.localStorage.setItem('globalheaderColor', value)
     },
     //设置 当前选中
     SET_ACTIVE_TABS(state, value) {

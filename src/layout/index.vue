@@ -1,24 +1,27 @@
 <template>
 	<div>
 		<el-container>
-			<el-aside width="200px">侧边</el-aside>
+			<el-aside width="200px">
+				<SideScroll />
+			</el-aside>
 			<el-container>
 				<el-header>
 					<Header />
 				</el-header>
-				<el-main>
-					<!-- 渲染路径 -->
+				<!-- <el-main>
 					<router-view />
-				</el-main>
+				</el-main> -->
 			</el-container>
 		</el-container>
 	</div>
 </template>
 <script>
 import Header from './components/header'
+import SideScroll from './components/SideScroll'
 export default {
 	components: {
 		Header,
+		SideScroll,
 	},
 	data() {
 		return {}
@@ -29,7 +32,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .el-header {
-	padding: 0!important;
+	padding: 0 !important;
 }
 .el-container {
 	min-height: 100vh;

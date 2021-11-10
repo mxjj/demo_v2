@@ -42,5 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import './style/globalColor.scss'
+@import './style/globalColor.scss';
+@import './style/themeStyle.scss'
+
 </style>

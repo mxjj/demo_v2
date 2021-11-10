@@ -4,14 +4,14 @@
 import layout from '@/layout'
 const test = [{
     path: "/test",
-    name: 'test',
+    name: 'home',
     component:layout,
     meta: {
         title: '测试',
     },
     children: [{
         path: "/test",
-        name: 'test',
+        name: 'home',
         meta: {
             title: '测试',
         },

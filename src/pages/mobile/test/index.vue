@@ -1,11 +1,10 @@
 <template>
 	<div>
-		test
 	</div>
 </template>
 <script>
 export default {
-	name: 'test',
+	name: 'home',
 	data() {
 		return {
 			onToView() {
