@@ -1,18 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {
-    state,
-    mutations,
-    actions
-} from './store.js'
-
+import getters from './getters'
 Vue.use(Vuex)
+
+/**
+ *  自动引入模块路径
+ */
+const modulesFiles = require.context('./modules', true, /\.js$/)
+const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+    // set './app.js' => 'app'
+    const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+    const value = modulesFiles(modulePath)
+    modules[moduleName] = value.default
+    // console.log(modules);
+    return modules
+}, {})
 
 
 const store = new Vuex.Store({
-    mutations,
-    state,
-    actions
+    modules,
+    getters
 })
 
 

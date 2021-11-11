@@ -4,7 +4,7 @@ import cssVars from 'css-vars-ponyfill'
 let color,
     headerColor,
     tabarColor = ''
-
+let namespaced = true
 try {
     // 方便下次进来直接更换用户之前设定的初始的主题颜色
     color = window.localStorage.getItem('globalColor') || 'blue'
@@ -45,8 +45,8 @@ const mutations = {
         state.headerColor = value
         window.localStorage.setItem('globalheaderColor', value)
     },
-      // 修改侧边主题颜色
-      SET_Tabbar_THEMR_COLOR(state, value) {
+    // 修改侧边主题颜色
+    SET_Tabbar_THEMR_COLOR(state, value) {
         cssVars({
             preserveStatic: false,
             variables: ({
@@ -78,6 +78,7 @@ const actions = {
 }
 
 export {
+    namespaced,
     state,
     mutations,
     actions
